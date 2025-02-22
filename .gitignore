@@ -67,3 +67,4 @@ Podfile.lock
 src/Config/Api.js
 src/Utils/googleApiKey.js
 ios/
+src/Constants/Firebase/index.js

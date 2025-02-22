@@ -68,3 +68,5 @@ src/Config/Api.js
 src/Utils/googleApiKey.js
 ios/
 src/Constants/Firebase/index.js
+src/Constants/index.js
+android/app/src/main/AndroidManifest.xml

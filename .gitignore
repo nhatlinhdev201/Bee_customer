@@ -62,3 +62,6 @@ buck-out/
 package-lock.json
 yarn.lock
 Podfile.lock
+
+
+src/Config/Api.js

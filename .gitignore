@@ -65,4 +65,4 @@ Podfile.lock
 
 
 src/Config/Api.js
-src\Utils\googleApiKey.js
+src/Utils/googleApiKey.js

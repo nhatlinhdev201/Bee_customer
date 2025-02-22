@@ -101,11 +101,6 @@ const NewsCopm = () => {
                         initialNumToRender={10}
                         maxToRenderPerBatch={10}
                     /> */}
-                    <View
-                        style={[{ paddingHorizontal: 20 }, MainStyles.flexRowSpaceBetween]}
-                    >
-                        <Text style={[MainStyles.title]}>Tin nổi bật</Text>
-                    </View>
                     <ServiceNews
                         limit={20}
                         dataNewService={dataNewService?.length > 0 ? dataNewService : dataNewServiceDefault}

@@ -7,8 +7,9 @@ import { ScreenNames, StorageNames } from "../../Constants";
 import { image_banner_2, image_banner_3, image_banner_4 } from "../../assets";
 import Button from "../../components/buttons/Button";
 import ArrowRight from "../../components/svg/ArrowRight";
-import { setData } from "../../Utils";
+import { consoleLog, setData } from "../../Utils";
 import { PropTypes } from "prop-types";
+import { useRoute } from "@react-navigation/native";
 
 const dataSlider = [
   {
@@ -36,6 +37,10 @@ const dataSlider = [
 const AboutScreen = ({ navigation }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const swiperRef = useRef(null);
+  const route = useRoute();
+  const { previous } = route.params || {};
+
+  consoleLog("previous", previous);
 
   const handleNext = async () => {
     if (currentIndex < dataSlider.length - 1) {
@@ -45,9 +50,10 @@ const AboutScreen = ({ navigation }) => {
     }
     if (currentIndex === 2) {
       await setData(StorageNames.IS_OLD_USER, true);
-      navigation.reset({
-        routes: [{ name: ScreenNames.HOME }],
-      });
+      // navigation.reset({
+      //   routes: [{ name: ScreenNames.HOME }],
+      // });
+      navigation.replace(previous || ScreenNames.LOGIN);
     }
   };
 

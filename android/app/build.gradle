@@ -140,12 +140,12 @@ android {
         applicationId "com.ongvangvietnam"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 11
-        versionName "1.1.1"
+        versionCode 12
+        versionName "1.1.2"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
         multiDexEnabled true
 
-        if (isNewArchitectureEnabled()) {
+    if (isNewArchitectureEnabled()) {
             // We configure the CMake build only if you decide to opt-in for the New Architecture.
             externalNativeBuild {
                 cmake {

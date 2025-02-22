@@ -21,6 +21,7 @@ import { PropTypes } from "prop-types";
 import { ShowPoint } from "./ShowPoint";
 import BtnDouble from "./BtnDouble";
 import FastImage from "react-native-fast-image";
+import { getData } from "../Utils";
 
 const UserHeader = ({
   loadingUser = false,
@@ -29,6 +30,31 @@ const UserHeader = ({
   const userLogin = useSelector((state) => state.main.userLogin);
   const customerId = useSelector((state) => state.main.customerId);
   const navi = useNavigation();
+
+  const GoLogin = async () => {
+    try {
+      const isOld = await getData(StorageNames.IS_OLD_USER);
+      if (isOld) {
+        navi.navigate(ScreenNames.LOGIN);
+      } else {
+        navi.navigate(ScreenNames.ABOUT, { previous: ScreenNames.LOGIN });
+      }
+    } catch (error) {
+    }
+  }
+
+  const GoRegister = async () => {
+    try {
+      const isOld = await getData(StorageNames.IS_OLD_USER);
+      if (isOld) {
+        navi.replace(ScreenNames.REGISTER);
+      } else {
+        navi.replace(ScreenNames.ABOUT, { previous: ScreenNames.REGISTER });
+      }
+    } catch (error) {
+    }
+  }
+
   return (
     <ImageBackground source={bg_header} resizeMode="cover" style={styles.container}>
       <StatusBar backgroundColor={themeColors.header} />
@@ -130,6 +156,8 @@ const UserHeader = ({
                             resizeMode: "contain",
                             marginRight: 10,
                             borderRadius: SCREEN_WIDTH * 0.09,
+                            borderWidth: 1,
+                            borderColor: themeColors.textWhite
                           }}
                         />
                       </TouchableOpacity>
@@ -146,6 +174,9 @@ const UserHeader = ({
                             height: SCREEN_WIDTH * 0.09,
                             resizeMode: "contain",
                             marginRight: 10,
+                            borderWidth: 1,
+                            borderRadius: SCREEN_WIDTH * 0.09,
+                            borderColor: themeColors.textWhite
                           }}
                         />
                       </TouchableOpacity>
@@ -177,9 +208,10 @@ const UserHeader = ({
                   <View style={{ marginTop: 15 }}>
                     <View style={[MainStyles.flexRowSpaceBetween]}>
                       <TouchableOpacity
-                        onPress={() => {
-                          navi.navigate(ScreenNames.LOGIN);
-                        }}
+                        // onPress={() => {
+                        //   navi.navigate(ScreenNames.LOGIN);
+                        // }}
+                        onPress={GoLogin}
                         style={[MainStyles.flexRowCenter, {
                           padding: 5,
                           width: "50%",
@@ -200,9 +232,10 @@ const UserHeader = ({
                         </View>
                       </TouchableOpacity>
                       <TouchableOpacity
-                        onPress={() => {
-                          navi.navigate(ScreenNames.REGISTER);
-                        }}
+                        // onPress={() => {
+                        //   navi.navigate(ScreenNames.REGISTER);
+                        // }}
+                        onPress={GoRegister}
                         style={[MainStyles.flexRowCenter, {
                           padding: 5,
                           width: "50%",

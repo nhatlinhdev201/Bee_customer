@@ -14,6 +14,7 @@
     "android-clean": "rm -rf node_modules && rm -rf yarn.lock && yarn install && cd android && ./gradlew clean && cd .. && yarn android",
     "postinstall": "patch-package",
     "apk": "cd android && ./gradlew clean && ./gradlew assembleRelease && open app/build/outputs/apk/release",
+    "apkd": "cd android && ./gradlew clean && ./gradlew assembleDebug && open app/build/outputs/apk/release",
     "abb": "cd android && ./gradlew clean && ./gradlew bundleRelease && open app/build/outputs/bundle/release",
     "remove-app": "adb uninstall com.ongvangvietnam"
   },

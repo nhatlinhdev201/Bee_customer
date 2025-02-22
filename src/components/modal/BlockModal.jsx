@@ -130,48 +130,6 @@ const BlockModal = ({
     }
   };
 
-  // const handleLocationButtonPress = async () => {
-  //   try {
-  //     // Kiểm tra quyền truy cập vị trí
-  //     const result = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
-  //     if (result === RESULTS.DENIED) {
-  //       // Yêu cầu quyền truy cập vị trí
-  //       const requestResult = await request(
-  //         PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
-  //       );
-  //       if (requestResult === RESULTS.GRANTED) {
-  //         // Quyền đã được cấp
-  //         onRetry();
-  //       } else {
-  //         // Quyền bị từ chối, mở trang cài đặt
-  //         Alert.alert(
-  //           "Quyền truy cập vị trí bị từ chối",
-  //           "Vui lòng cấp quyền truy cập vị trí trong cài đặt.",
-  //           [
-  //             { text: "Hủy", style: "cancel" },
-  //             { text: "Cài đặt", onPress: () => openSettings() },
-  //           ]
-  //         );
-  //       }
-  //     } else if (result === RESULTS.BLOCKED) {
-  //       // Quyền bị chặn, mở trang cài đặt
-  //       Alert.alert(
-  //         "Quyền truy cập vị trí bị chặn",
-  //         "Vui lòng cấp quyền truy cập vị trí trong cài đặt.",
-  //         [
-  //           { text: "Hủy", style: "cancel" },
-  //           { text: "Cài đặt", onPress: () => openSettings() },
-  //         ]
-  //       );
-  //     } else if (result === RESULTS.GRANTED) {
-  //       // Quyền đã được cấp
-  //       onRetry();
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to check or request location permission", error);
-  //   }
-  // };
-
   return (
     <Modal
       isVisible={isModalVisible}

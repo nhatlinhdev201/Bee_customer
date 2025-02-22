@@ -21,14 +21,14 @@ const carouselItemComp = ({ dataCarousel = [] }) => {
             height: SCREEN_HEIGHT * 0.2,
             borderRadius: 10,
             width: "100%",
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            elevation: 5,
+            // shadowColor: "#000",
+            // shadowOffset: {
+            //   width: 0,
+            //   height: 2,
+            // },
+            // shadowOpacity: 0.25,
+            // shadowRadius: 3.84,
+            // elevation: 5,
           }}
         />
       </View>

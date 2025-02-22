@@ -36,7 +36,7 @@ const HeaderComp = ({
               >
                 {/* <ArrowLeft color={themeColors.iconc} size={28} /> */}
                 <Icon
-                  style={MainStyles.CardIcon}
+                  style={[MainStyles.CardIcon]}
                   fill={themeColors.textHeader}
                   name="arrow-ios-back-outline"
                 />

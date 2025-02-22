@@ -9,7 +9,7 @@ import MainStyles, { SCREEN_HEIGHT } from "../../styles/MainStyle";
 import UserHeader from "../../components/UserHeader";
 import { ScreenNames, StorageNames } from "../../Constants";
 import { mainAction } from "../../Redux/Action";
-import { consoleLog, getData, prints, setData } from "../../Utils";
+import { consoleLog, getData, prints, removeData, setData } from "../../Utils";
 import { dataNewServiceDefault, dataSliderDefault } from "../data";
 import AlertModalFaceId from "../../components/AlertModalFaceId";
 import TouchID from "react-native-touch-id";
@@ -32,7 +32,7 @@ const HomeScreen = () => {
   const [dataNewService, setDataNewService] = useState(
     dataNewServiceDefault
   );
- 
+
   const [isVisiableModalFace, setIsVisiableModalFace] = useState(false);
   const [dataCarousel, setDataCarousel] = useState(dataSliderDefault);
 
@@ -42,38 +42,29 @@ const HomeScreen = () => {
     Shop_spWeb_News_List();
     // checkFaceIDAvailability();
     OVG_spAddress_List_By_Customer();
-    // CheckRouter();
+    CheckUser();
 
     return () => {
-      
+
     }
   }, []);
   useFocusEffect(() => {
     OVG_FBRT_GEtTotalOrdersGet();
 
     return () => {
-      
+
     }
   });
 
   //#region check router 
-  const CheckRouter = async () => {
+  const CheckUser = async () => {
     try {
       setLoadingUser(true);
-      const isOld = await getData(StorageNames.IS_OLD_USER);
-      if (isOld) {
-        const userLogin = await getData(StorageNames.USER_PROFILE);
-        const customerId = await getData(StorageNames.CUSTOMER_ID);
-        mainAction.userLogin(userLogin, dispatch);
-        mainAction.customerId(customerId, dispatch);
-        setLoadingUser(false);
-      } else {
-        navi.reset({
-          index: 0,
-          routes: [{ name: ScreenNames.ABOUT }],
-        });
-        setLoadingUser(false)
-      }
+      // await removeData(StorageNames.IS_OLD_USER);
+      const userLogin = await getData(StorageNames.USER_PROFILE);
+      const customerId = await getData(StorageNames.CUSTOMER_ID);
+      mainAction.userLogin(userLogin, dispatch);
+      mainAction.customerId(customerId, dispatch);
       setLoadingUser(false)
     } catch (error) {
       setLoadingUser(false)
